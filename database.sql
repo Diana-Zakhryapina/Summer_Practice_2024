@@ -1,4 +1,3 @@
--- init.sql
 CREATE DATABASE vacancies_db;
 
 \c vacancies_db;
