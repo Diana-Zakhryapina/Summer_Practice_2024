@@ -8,15 +8,12 @@ import os
 from psycopg2 import sql
 from dotenv import load_dotenv
 
-# Загрузите переменные окружения из .env файла
 load_dotenv()
 
-# Set up logging
 logging.basicConfig(level=logging.INFO)
 
 API_TOKEN = '7169093777:AAGIg5jjGN8fV7HLBbmUj_mBxgKkNTiplLA'
 
-# Database connection
 DB_HOST = "db"
 DB_PORT = "5432"
 DB_NAME = "vacancies_db"
@@ -295,7 +292,6 @@ async def filter_by(update: Update, context: ContextTypes.DEFAULT_TYPE):
     area = context.user_data.get('area')
 
 
-    # Таблица соответствия experience_id и значений в базе данных
     experience_mapping = {
         'noExperience': 'Нет опыта',
         'between1And3': 'От 1 года до 3 лет',
@@ -305,7 +301,7 @@ async def filter_by(update: Update, context: ContextTypes.DEFAULT_TYPE):
     experience = experience_mapping.get(experience_id)
     conditions = []
     params = []
-    # Формирование SQL-запроса
+
     if currency:
         conditions.append("currency = %s")
         params.append(currency)
@@ -337,10 +333,8 @@ async def filter_by(update: Update, context: ContextTypes.DEFAULT_TYPE):
         conditions.append("area ILIKE %s")
         params.append(f"%{area}%")
 
-    # Создание SQL-запроса
     query = sql.SQL("SELECT * FROM vacancies WHERE " + " AND ".join(conditions))
 
-    # Выполнение SQL-запроса
     try:
         cursor.execute(query, params)
         results = cursor.fetchall()
