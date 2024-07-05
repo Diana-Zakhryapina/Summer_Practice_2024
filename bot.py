@@ -183,7 +183,7 @@ async def search_vacancies(update: Update, context: ContextTypes.DEFAULT_TYPE):
         'salary': salary if salary else '1',
         'currency': 'RUR',
         'experience': experience if experience else 'noExperience',
-        'area': '1',  # Russia
+        'area': '113',  # Russia
         'per_page': '50',
         'only_with_salary': 'true'
     }
