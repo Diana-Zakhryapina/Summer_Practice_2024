@@ -1,7 +1,7 @@
 import logging
-from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup  # type: ignore
+from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CallbackContext, CallbackQueryHandler, \
-    CommandHandler, CallbackQueryHandler, MessageHandler, filters, ContextTypes  # type: ignore
+    CommandHandler, CallbackQueryHandler, MessageHandler, filters, ContextTypes
 import requests
 import psycopg2
 import os
